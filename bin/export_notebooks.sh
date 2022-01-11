@@ -8,4 +8,4 @@ do
   notebooksLinks="${notebooksLinks}<a href=\'./${fileName}.html\'>${fileName}</a>"
 done
 
-sed -i '' "s%NOTEBOOKS%${notebooksLinks}%" ./docs/index.html
+sed -i "s%NOTEBOOKS%${notebooksLinks}%" ./docs/index.html
