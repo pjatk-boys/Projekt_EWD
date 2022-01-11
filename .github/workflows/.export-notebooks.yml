@@ -18,3 +18,11 @@ jobs:
       
       - run: pip install jupyter pandas matplotlib
       - run: bash ./bin/export_notebooks.sh
+
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: './docs'
+          branch: main
+          default_author: github_actions
+          push: true
+          message: 'chore: export notebooks at [${{ steps.current-time.outputs.readableTime }}]'
