@@ -1,0 +1,31 @@
+name: Export notebooks to HTML
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  export:
+    name: Export notebooks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9.7
+      
+      - uses: 1466587594/get-current-time@v2
+        id: current-time
+        
+      - run: pip install jupyter
+      - run: bash ./bin/export_notebooks.sh
+
+      - uses: EndBug/add-and-commit@v7
+        with:
+          add: './docs'
+          branch: main
+          default_author: github_actions
+          push: true
+          message: 'chore: export notebooks at [${{ steps.current-time.outputs.readableTime }}]'
