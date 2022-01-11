@@ -1,0 +1,15 @@
+name: Export notebooks to HTML
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  export:
+    name: Export notebooks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: bash ./bin/export_notebooks.sh
