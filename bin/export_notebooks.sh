@@ -1,3 +1,4 @@
+ls
 cp templates/index.html docs/index.html
 
 notebooksLinks=""
