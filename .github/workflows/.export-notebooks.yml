@@ -3,7 +3,6 @@ name: Export notebooks to HTML
 on:
   workflow_dispatch:
   push:
-    branches: [main]
 
 jobs:
   export:
@@ -21,11 +20,11 @@ jobs:
         
       - run: pip install jupyter
       - run: bash ./bin/export_notebooks.sh
+      - run: rm -rf ./docs
 
       - uses: EndBug/add-and-commit@v7
         with:
           add: './docs'
-          branch: main
           default_author: github_actions
           push: true
           message: 'chore: export notebooks at [${{ steps.current-time.outputs.readableTime }}]'
