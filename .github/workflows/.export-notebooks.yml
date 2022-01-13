@@ -2,7 +2,7 @@ name: Export notebooks to HTML
 
 on:
   workflow_dispatch:
-  push:
+  pull_request:
 
 jobs:
   export:
@@ -18,9 +18,9 @@ jobs:
       - uses: 1466587594/get-current-time@v2
         id: current-time
         
+      - run: rm -rf ./docs
       - run: pip install jupyter
       - run: bash ./bin/export_notebooks.sh
-      - run: rm -rf ./docs
 
       - uses: EndBug/add-and-commit@v7
         with:
