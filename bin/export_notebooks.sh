@@ -1,4 +1,4 @@
-ls
+mkdir docs
 cp templates/index.html docs/index.html
 
 notebooksLinks=""
