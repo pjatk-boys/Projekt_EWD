@@ -1,4 +1,5 @@
-cp ./templates/index.html ./docs/index.html
+mkdir docs
+cp templates/index.html docs/index.html
 
 notebooksLinks=""
 for file in notebooks/*.ipynb
@@ -8,4 +9,4 @@ do
   notebooksLinks="${notebooksLinks}<li><a href=\'./notebooks/${fileName}.html\'>${fileName}</a></li>"
 done
 
-sed -i "s%NOTEBOOKS%${notebooksLinks}%" ./docs/index.html
+sed -i "s%NOTEBOOKS%${notebooksLinks}%" docs/index.html
